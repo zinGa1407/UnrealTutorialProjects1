@@ -96,7 +96,9 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AFPSExtractionZone); \
 
 #define StealthGame_Source_FPSGame_Public_FPSExtractionZone_h_14_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__OverlapComp() { return STRUCT_OFFSET(AFPSExtractionZone, OverlapComp); } \
-	FORCEINLINE static uint32 __PPO__DecalComp() { return STRUCT_OFFSET(AFPSExtractionZone, DecalComp); }
+	FORCEINLINE static uint32 __PPO__DecalComp() { return STRUCT_OFFSET(AFPSExtractionZone, DecalComp); } \
+	FORCEINLINE static uint32 __PPO__ObjectiveMissingSound() { return STRUCT_OFFSET(AFPSExtractionZone, ObjectiveMissingSound); } \
+	FORCEINLINE static uint32 __PPO__ObjectiveCompletedSound() { return STRUCT_OFFSET(AFPSExtractionZone, ObjectiveCompletedSound); }
 
 
 #define StealthGame_Source_FPSGame_Public_FPSExtractionZone_h_11_PROLOG

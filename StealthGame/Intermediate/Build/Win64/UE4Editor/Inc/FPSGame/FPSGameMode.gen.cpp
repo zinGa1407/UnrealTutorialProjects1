@@ -17,9 +17,40 @@ void EmptyLinkFunctionForGeneratedCodeFPSGameMode() {}
 	FPSGAME_API UClass* Z_Construct_UClass_AFPSGameMode();
 	ENGINE_API UClass* Z_Construct_UClass_AGameModeBase();
 	UPackage* Z_Construct_UPackage__Script_FPSGame();
+	FPSGAME_API UFunction* Z_Construct_UFunction_AFPSGameMode_OnMissionCompleted();
+	ENGINE_API UClass* Z_Construct_UClass_APawn_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 // End Cross Module References
+	static FName NAME_AFPSGameMode_OnMissionCompleted = FName(TEXT("OnMissionCompleted"));
+	void AFPSGameMode::OnMissionCompleted(APawn* InstigatorPawn)
+	{
+		FPSGameMode_eventOnMissionCompleted_Parms Parms;
+		Parms.InstigatorPawn=InstigatorPawn;
+		ProcessEvent(FindFunctionChecked(NAME_AFPSGameMode_OnMissionCompleted),&Parms);
+	}
 	void AFPSGameMode::StaticRegisterNativesAFPSGameMode()
 	{
+	}
+	UFunction* Z_Construct_UFunction_AFPSGameMode_OnMissionCompleted()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_InstigatorPawn = { UE4CodeGen_Private::EPropertyClass::Object, "InstigatorPawn", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(FPSGameMode_eventOnMissionCompleted_Parms, InstigatorPawn), Z_Construct_UClass_APawn_NoRegister, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_InstigatorPawn,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "GameMode" },
+				{ "ModuleRelativePath", "Public/FPSGameMode.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AFPSGameMode, "OnMissionCompleted", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x08020800, sizeof(FPSGameMode_eventOnMissionCompleted_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_AFPSGameMode_NoRegister()
 	{
@@ -34,6 +65,9 @@ void EmptyLinkFunctionForGeneratedCodeFPSGameMode() {}
 				(UObject* (*)())Z_Construct_UClass_AGameModeBase,
 				(UObject* (*)())Z_Construct_UPackage__Script_FPSGame,
 			};
+			static const FClassFunctionLinkInfo FuncInfo[] = {
+				{ &Z_Construct_UFunction_AFPSGameMode_OnMissionCompleted, "OnMissionCompleted" }, // 3054054941
+			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
 				{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering Utilities|Transformation" },
@@ -42,6 +76,16 @@ void EmptyLinkFunctionForGeneratedCodeFPSGameMode() {}
 				{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 			};
 #endif
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_SpectatingViewPointClass_MetaData[] = {
+				{ "Category", "Spectating" },
+				{ "ModuleRelativePath", "Public/FPSGameMode.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FClassPropertyParams NewProp_SpectatingViewPointClass = { UE4CodeGen_Private::EPropertyClass::Class, "SpectatingViewPointClass", RF_Public|RF_Transient|RF_MarkAsNative, 0x0024080000010001, 1, nullptr, STRUCT_OFFSET(AFPSGameMode, SpectatingViewPointClass), Z_Construct_UClass_AActor_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(NewProp_SpectatingViewPointClass_MetaData, ARRAY_COUNT(NewProp_SpectatingViewPointClass_MetaData)) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpectatingViewPointClass,
+			};
 			static const FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 				TCppClassTypeTraits<AFPSGameMode>::IsAbstract,
 			};
@@ -49,8 +93,8 @@ void EmptyLinkFunctionForGeneratedCodeFPSGameMode() {}
 				&AFPSGameMode::StaticClass,
 				DependentSingletons, ARRAY_COUNT(DependentSingletons),
 				0x00800288u,
-				nullptr, 0,
-				nullptr, 0,
+				FuncInfo, ARRAY_COUNT(FuncInfo),
+				PropPointers, ARRAY_COUNT(PropPointers),
 				nullptr,
 				&StaticCppClassTypeInfo,
 				nullptr, 0,
@@ -60,7 +104,7 @@ void EmptyLinkFunctionForGeneratedCodeFPSGameMode() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFPSGameMode, 3367149229);
+	IMPLEMENT_CLASS(AFPSGameMode, 340992904);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AFPSGameMode(Z_Construct_UClass_AFPSGameMode, &AFPSGameMode::StaticClass, TEXT("/Script/FPSGame"), TEXT("AFPSGameMode"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AFPSGameMode);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

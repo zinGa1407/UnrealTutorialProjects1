@@ -8,6 +8,7 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class APawn;
 #ifdef FPSGAME_FPSGameMode_generated_h
 #error "FPSGameMode.generated.h already included, missing '#pragma once' in FPSGameMode.h"
 #endif
@@ -15,6 +16,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_RPC_WRAPPERS
 #define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_RPC_WRAPPERS_NO_PURE_DECLS
+#define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_EVENT_PARMS \
+	struct FPSGameMode_eventOnMissionCompleted_Parms \
+	{ \
+		APawn* InstigatorPawn; \
+	};
+
+
+#define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_CALLBACK_WRAPPERS
 #define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAFPSGameMode(); \
@@ -59,13 +68,20 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AFPSGameMode); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AFPSGameMode)
 
 
-#define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_PRIVATE_PROPERTY_OFFSET
-#define StealthGame_Source_FPSGame_Public_FPSGameMode_h_9_PROLOG
+#define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__SpectatingViewPointClass() { return STRUCT_OFFSET(AFPSGameMode, SpectatingViewPointClass); }
+
+
+#define StealthGame_Source_FPSGame_Public_FPSGameMode_h_9_PROLOG \
+	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_EVENT_PARMS
+
+
 #define StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_PRIVATE_PROPERTY_OFFSET \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_RPC_WRAPPERS \
+	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_CALLBACK_WRAPPERS \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_INCLASS \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_STANDARD_CONSTRUCTORS \
 public: \
@@ -77,6 +93,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_PRIVATE_PROPERTY_OFFSET \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_CALLBACK_WRAPPERS \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_INCLASS_NO_PURE_DECLS \
 	StealthGame_Source_FPSGame_Public_FPSGameMode_h_12_ENHANCED_CONSTRUCTORS \
 private: \

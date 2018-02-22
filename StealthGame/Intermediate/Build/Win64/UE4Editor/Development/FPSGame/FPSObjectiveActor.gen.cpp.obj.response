@@ -23,10 +23,10 @@
 /wd4838
 /w44668
 /I "C:\Program Files\Epic Games\UE_4.18\Engine\Source"
-/I "C:\Users\Alexander\Documents\Unreal Projects\StealthGame\Source"
-/I "C:\Users\Alexander\Documents\Unreal Projects\StealthGame\Source\FPSGame\Public"
-/I "C:\Users\Alexander\Documents\Unreal Projects\StealthGame\Intermediate\Build\Win64\UE4Editor\Inc\FPSGame"
-/I "C:\Users\Alexander\Documents\Unreal Projects\StealthGame\Source\FPSGame"
+/I C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Source
+/I C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Source\FPSGame\Public
+/I C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Inc\FPSGame
+/I C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Source\FPSGame
 /I "C:\Program Files\Epic Games\UE_4.18\Engine\Source\Runtime\Core\Public"
 /I "C:\Program Files\Epic Games\UE_4.18\Engine\Source\Runtime\Core\Public\Internationalization"
 /I "C:\Program Files\Epic Games\UE_4.18\Engine\Source\Runtime\Core\Public\Async"
@@ -359,9 +359,9 @@
 /FI"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Yu"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Fp"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
-"C:\Users\Alexander\Documents\Unreal Projects\StealthGame\Intermediate\Build\Win64\UE4Editor\Inc\FPSGame\FPSObjectiveActor.gen.cpp"
-/FI"C:\Users\Alexander\Documents\Unreal Projects\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\Definitions.FPSGame.h"
-/Fo"C:\Users\Alexander\Documents\Unreal Projects\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSObjectiveActor.gen.cpp.obj"
+"C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Inc\FPSGame\FPSObjectiveActor.gen.cpp"
+/FI"C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\Definitions.FPSGame.h"
+/Fo"C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSObjectiveActor.gen.cpp.obj"
 /TP
 /GR-
 /W4
