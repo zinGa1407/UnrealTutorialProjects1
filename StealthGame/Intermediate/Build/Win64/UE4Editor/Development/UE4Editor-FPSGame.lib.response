@@ -8,6 +8,7 @@
 /NODEFAULTLIB
 "C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSGame.cpp.obj"
+"C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSAIGuard.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSBlackHole.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSCharacter.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSExtractionZone.cpp.obj"
@@ -16,6 +17,7 @@
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSLaunchPad.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSObjectiveActor.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSProjectile.cpp.obj"
+"C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSAIGuard.gen.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSBlackHole.gen.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSCharacter.gen.cpp.obj"
 "C:\Users\Alexander\Documents\GitHub\UnrealTutorialProjects1\StealthGame\Intermediate\Build\Win64\UE4Editor\Development\FPSGame\FPSExtractionZone.gen.cpp.obj"
