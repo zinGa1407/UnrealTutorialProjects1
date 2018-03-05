@@ -21,6 +21,7 @@ void EmptyLinkFunctionForGeneratedCodeFPSCharacter() {}
 	ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 	FPSGAME_API UClass* Z_Construct_UClass_AFPSProjectile_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_UPawnNoiseEmitterComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
 // End Cross Module References
@@ -80,6 +81,14 @@ void EmptyLinkFunctionForGeneratedCodeFPSCharacter() {}
 #endif
 			static const UE4CodeGen_Private::FClassPropertyParams NewProp_ProjectileClass = { UE4CodeGen_Private::EPropertyClass::Class, "ProjectileClass", RF_Public|RF_Transient|RF_MarkAsNative, 0x0014000000010001, 1, nullptr, STRUCT_OFFSET(AFPSCharacter, ProjectileClass), Z_Construct_UClass_AFPSProjectile_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(NewProp_ProjectileClass_MetaData, ARRAY_COUNT(NewProp_ProjectileClass_MetaData)) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_NoiseEmitterComponent_MetaData[] = {
+				{ "Category", "AI" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "Public/FPSCharacter.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_NoiseEmitterComponent = { UE4CodeGen_Private::EPropertyClass::Object, "NoiseEmitterComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00200800000a001d, 1, nullptr, STRUCT_OFFSET(AFPSCharacter, NoiseEmitterComponent), Z_Construct_UClass_UPawnNoiseEmitterComponent_NoRegister, METADATA_PARAMS(NewProp_NoiseEmitterComponent_MetaData, ARRAY_COUNT(NewProp_NoiseEmitterComponent_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CameraComponent_MetaData[] = {
 				{ "Category", "Camera" },
 				{ "EditInline", "true" },
@@ -111,6 +120,7 @@ void EmptyLinkFunctionForGeneratedCodeFPSCharacter() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_FireAnimation,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_FireSound,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ProjectileClass,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_NoiseEmitterComponent,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CameraComponent,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_GunMeshComponent,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Mesh1PComponent,
@@ -133,7 +143,7 @@ void EmptyLinkFunctionForGeneratedCodeFPSCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AFPSCharacter, 3525554611);
+	IMPLEMENT_CLASS(AFPSCharacter, 3063792109);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AFPSCharacter(Z_Construct_UClass_AFPSCharacter, &AFPSCharacter::StaticClass, TEXT("/Script/FPSGame"), TEXT("AFPSCharacter"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AFPSCharacter);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
