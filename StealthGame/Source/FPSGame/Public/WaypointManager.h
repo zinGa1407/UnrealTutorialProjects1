@@ -15,6 +15,8 @@ public:
 	// Sets default values for this actor's properties
 	AWaypointManager();
 
+	TArray<AActor*> GetWaypointsInLevel();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -23,6 +25,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Waypoints")
 	TArray<AActor*> WaypointsArray;
+
+
 
 public:	
 	// Called every frame
