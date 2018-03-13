@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define FPSGAME_WaypointAgent_generated_h
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_RPC_WRAPPERS
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_RPC_WRAPPERS_NO_PURE_DECLS
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_INCLASS_NO_PURE_DECLS \
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAWaypointAgent(); \
 	friend FPSGAME_API class UClass* Z_Construct_UClass_AWaypointAgent(); \
@@ -25,7 +25,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_INCLASS \
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS \
 private: \
 	static void StaticRegisterNativesAWaypointAgent(); \
 	friend FPSGAME_API class UClass* Z_Construct_UClass_AWaypointAgent(); \
@@ -35,7 +35,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_STANDARD_CONSTRUCTORS \
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AWaypointAgent(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AWaypointAgent) \
@@ -48,7 +48,7 @@ private: \
 public:
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_ENHANCED_CONSTRUCTORS \
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AWaypointAgent(AWaypointAgent&&); \
@@ -59,33 +59,34 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AWaypointAgent); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AWaypointAgent)
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_PRIVATE_PROPERTY_OFFSET \
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__MeshComp() { return STRUCT_OFFSET(AWaypointAgent, MeshComp); } \
 	FORCEINLINE static uint32 __PPO__StartWaypoint() { return STRUCT_OFFSET(AWaypointAgent, StartWaypoint); } \
 	FORCEINLINE static uint32 __PPO__EndWaypoint() { return STRUCT_OFFSET(AWaypointAgent, EndWaypoint); } \
 	FORCEINLINE static uint32 __PPO__CurrentWaypoint() { return STRUCT_OFFSET(AWaypointAgent, CurrentWaypoint); } \
-	FORCEINLINE static uint32 __PPO__TargettWaypoint() { return STRUCT_OFFSET(AWaypointAgent, TargettWaypoint); }
+	FORCEINLINE static uint32 __PPO__TargetWaypoint() { return STRUCT_OFFSET(AWaypointAgent, TargetWaypoint); } \
+	FORCEINLINE static uint32 __PPO__WaypointManager() { return STRUCT_OFFSET(AWaypointAgent, WaypointManager); }
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_11_PROLOG
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_GENERATED_BODY_LEGACY \
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_12_PROLOG
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_PRIVATE_PROPERTY_OFFSET \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_RPC_WRAPPERS \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_INCLASS \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_STANDARD_CONSTRUCTORS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_PRIVATE_PROPERTY_OFFSET \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_GENERATED_BODY \
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_PRIVATE_PROPERTY_OFFSET \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_INCLASS_NO_PURE_DECLS \
-	StealthGame_Source_FPSGame_Public_WaypointAgent_h_14_ENHANCED_CONSTRUCTORS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_PRIVATE_PROPERTY_OFFSET \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS_NO_PURE_DECLS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

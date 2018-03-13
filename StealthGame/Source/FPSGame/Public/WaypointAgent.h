@@ -6,7 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "WaypointAgent.generated.h"
 
-class USphereComponent;
+class AWaypointManager;
+class AWaypointNode;
 
 UCLASS()
 class FPSGAME_API AWaypointAgent : public AActor
@@ -31,23 +32,21 @@ protected:
 	UPROPERTY(VisibleInstanceOnly, Category = "AI")		// The waypoint where the actor is currently at
 	AActor * CurrentWaypoint;
 	UPROPERTY(VisibleInstanceOnly, Category = "AI")		// The waypoint where the actor is moving towards
-	AActor * TargettWaypoint;
+	AActor * TargetWaypoint;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI")
+	AWaypointManager * WaypointManager;							// The waypoint manager in the level
 
 protected:
 
-	AActor * WaypointManager;
+	TArray<AActor*> WaypointPathArray;					// Path of the Array the agent will go through towards destination
+	TArray<AActor*> SearchedThroughPoints;
 
-	TArray<AActor*> WaypointArray;
 protected:
 
-	void SetDestination();
-	void MoveActorToDestination();
-	void CheckNeighboursForDestination();
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+	void SetDestination();								// Set the TargetWaypoint for the Actor
+	void MoveActorToNextNode();
+	bool CheckNeighboursForDestination(AWaypointNode* NextWaypoint);
+	void FindPathToDestination();
 	
 	
 };
