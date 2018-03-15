@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "WaypointManager.h"
 #include "WaypointNode.h"
+#include "Algo/Reverse.h"
 
 
 // Sets default values
@@ -24,29 +25,40 @@ void AWaypointAgent::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	//Spawn Actor (car/human) and give it to the waypoint MANAGER to calculate path
+	//Make Actor (car/human) and give it to the waypoint MANAGER to calculate path
 	if (!WaypointManager) return;
 
 	// SET STARTPOINT, then calculate path
 	if (StartWaypoint) {
-		CurrentWaypoint = StartWaypoint;
+		PrintTimer();
 		SetDestination();
 	}
+
+
+	//Spawn and start driving/walking when destinations are set
 }
 
 void AWaypointAgent::SetDestination()
 {
 	if (WaypointManager){
-		TArray<AActor*> AllWaypoints = WaypointManager->GetWaypointsInLevel();
+		TArray<AWaypointNode*> AllWaypoints = WaypointManager->GetWaypointsInLevel();
 
-		EndWaypoint = AllWaypoints[FMath::RandRange(0, AllWaypoints.Num()-1)];
+		while (true)
+		{
+			EndWaypoint = AllWaypoints[FMath::RandRange(0, AllWaypoints.Num() - 1)];
 
-		if (EndWaypoint) FindPathToDestination();
+			if (EndWaypoint != StartWaypoint) break;
+		}
+		
+
+		if (EndWaypoint) FindPathToDestination(AllWaypoints);
 	}
 }
 
 void AWaypointAgent::MoveActorToNextNode()
 {
+	PrintTimer();
+
 	// Move towards next waypoint, smooth movement and check for objects in front.
 
 	// When node is reached, set next target node
@@ -56,48 +68,126 @@ void AWaypointAgent::MoveActorToNextNode()
 	// Final Event
 }
 
-bool AWaypointAgent::CheckNeighboursForDestination(AWaypointNode* NextWaypoint)
+void AWaypointAgent::FindPathToDestination(TArray<AWaypointNode*> AllWaypointsInLevel)
 {
-	if (NextWaypoint->NeighbouringWaypoints.Num() != 0) {
-		for (int32 i = 0; i < NextWaypoint->NeighbouringWaypoints.Num(); i++)
+	UE_LOG(LogTemp, Warning, TEXT("Start Path Search From %s , to point %s"), *StartWaypoint->GetName(), *EndWaypoint->GetName());
+
+	OpenSet.Empty();								//Queue to which neighbouring waypoints get pushed
+	ClosedSet.Empty();							//Waypoints that the algorithm has searched through
+	ParentListForConnectingObjects.Empty();
+
+	OpenSet.Push(StartWaypoint);
+
+	while (OpenSet.Num() > 0)
+	{
+		CurrentWaypoint = OpenSet[0];
+
+		for (int i = 0; i < OpenSet.Num(); i++)
 		{
-			if (NextWaypoint->NeighbouringWaypoints[i] == CurrentWaypoint) {		// Check if the current target is connected to the waypoint target
-				//Found a path!
-				//Connection.Add(NextWaypoint);
-				SearchedThroughPoints.Add(NextWaypoint->NeighbouringWaypoints[i]);
+			//ADD FOR CLOSEST PATH LOWEST COST CHECK
+			//Calculate distance and cost difference is open nodes
+
+			//if(OpenSet[i])
+		}
+
+		OpenSet.Remove(CurrentWaypoint);
+		ClosedSet.Add(CurrentWaypoint);
+
+		if (CurrentWaypoint == EndWaypoint) {
+			UE_LOG(LogTemp, Warning, TEXT("Found Target!"));
+			RetracePath(StartWaypoint, EndWaypoint);
+			return;
+		}
+
+		for (AWaypointNode* Neighbour : CurrentWaypoint->NeighbouringWaypoints)
+		{
+			if (ClosedSet.Contains(Neighbour))
+				continue;
+			
+			ParentListForConnectingObjects.Add(CurrentWaypoint);
+			if (!OpenSet.Contains(Neighbour)) 
+				OpenSet.Add(Neighbour);
+		}
+	}
+
+	/*
+	//Check through neighbours Function
+	TArray<AWaypointNode*> SearchQueue;								//Queue to which neighbouring waypoints get pushed
+	TArray<AWaypointNode*> SearchedThroughPoints;					//Waypoints that the algorithm has searched through
+
+	SearchQueue.Push(StartWaypoint);
+	SearchedThroughPoints.Push(StartWaypoint);
+
+	while (SearchQueue.Num() != 0)
+	{
+		bool bIsAllNullPtr = true;
+		for (int i = 0; i < SearchQueue.Num(); i++)
+		{
+			if (SearchQueue[i]) {
+				bIsAllNullPtr = false;
 				break;
 			}
-			else
+		}
+		if (bIsAllNullPtr) {
+			UE_LOG(LogTemp, Warning, TEXT("There are only nullptrs left so goodbye son"));
+			break;
+		}
+		
+		CurrentWaypoint = SearchQueue[0];
+		SearchQueue.RemoveAt(0, 1, true);
+		
+		
+		for (AWaypointNode* Neighbour : CurrentWaypoint->NeighbouringWaypoints)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Actor is looking for a destination in waypoint %s"), *Neighbour->GetName());
+
+			if (Neighbour == EndWaypoint)	// Found my starting node - Return path
 			{
-				SearchedThroughPoints.Add(NextWaypoint->NeighbouringWaypoints[i]);
-				//CheckNeighboursForDestination(NextWaypoint->NeighbouringWaypoints[i));
+				MoveActorToNextNode();
+				UE_LOG(LogTemp, Warning, TEXT("Found Target!"));
+				SearchQueue.Empty();
+				break;
+			}
+			
+			SearchedThroughPoints.Push(Neighbour);
+			for (int32 i = 0; i < Neighbour->NeighbouringWaypoints.Num(); i++)
+			{
+				AWaypointNode* NewNeighbour = Neighbour->NeighbouringWaypoints[i];
+				
+				if (SearchedThroughPoints.Contains(NewNeighbour)) {
+					UE_LOG(LogTemp, Warning, TEXT("Already searched through %s"), *NewNeighbour->GetName());
+				}
+				else {
+					SearchQueue.Push(NewNeighbour);
+				}
 			}
 		}
-		return false;
 	}
-	else
-	{
-		return false;
-	}
-
-	
-
+	*/
 }
 
-void AWaypointAgent::FindPathToDestination()
+void AWaypointAgent::RetracePath(AWaypointNode* StartNode, AWaypointNode* EndNode)
 {
-	//Set Target to end, then check all neighbouring until we find one that is connected to the startpoint
-	TargetWaypoint = EndWaypoint;
+	TArray<AWaypointNode*> PathOfNodes;
+	AWaypointNode* CurrentNode = EndNode;
 
-	UE_LOG(LogTemp, Warning, TEXT("Actor is looking for a destination"));
-
-	// Looking for Path through neighbouring waypoints
-	AWaypointNode * NextWaypoint = Cast<AWaypointNode>(TargetWaypoint);
-	SearchedThroughPoints.Empty();
-	CheckNeighboursForDestination(NextWaypoint);
-	for (int32 i = 0; i < SearchedThroughPoints.Num(); i++)
+	while (CurrentNode != StartNode)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Path taken to destination %d"), i);
+		PathOfNodes.Add(CurrentNode);
+
+		for (int i = 0; i < ClosedSet.Num(); i++)
+		{
+			if (ClosedSet[i] == CurrentNode)
+				CurrentNode = ParentListForConnectingObjects[i-1];
+		}
 	}
-	
+
+	Algo::Reverse(PathOfNodes);
+
+	for (int j = 0; j < PathOfNodes.Num(); j++)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *PathOfNodes[j]->GetName());
+	}
+
+	MoveActorToNextNode();
 }

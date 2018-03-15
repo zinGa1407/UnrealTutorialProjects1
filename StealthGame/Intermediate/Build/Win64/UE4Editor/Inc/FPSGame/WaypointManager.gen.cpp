@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeWaypointManager() {}
 	FPSGAME_API UClass* Z_Construct_UClass_AWaypointManager();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_FPSGame();
-	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
+	FPSGAME_API UClass* Z_Construct_UClass_AWaypointNode_NoRegister();
 // End Cross Module References
 	void AWaypointManager::StaticRegisterNativesAWaypointManager()
 	{
@@ -48,7 +48,7 @@ void EmptyLinkFunctionForGeneratedCodeWaypointManager() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_WaypointsArray = { UE4CodeGen_Private::EPropertyClass::Array, "WaypointsArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000000005, 1, nullptr, STRUCT_OFFSET(AWaypointManager, WaypointsArray), METADATA_PARAMS(NewProp_WaypointsArray_MetaData, ARRAY_COUNT(NewProp_WaypointsArray_MetaData)) };
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_WaypointsArray_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "WaypointsArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_WaypointsArray_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "WaypointsArray", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AWaypointNode_NoRegister, METADATA_PARAMS(nullptr, 0) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_WaypointsArray,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_WaypointsArray_Inner,
@@ -71,7 +71,7 @@ void EmptyLinkFunctionForGeneratedCodeWaypointManager() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AWaypointManager, 1037872592);
+	IMPLEMENT_CLASS(AWaypointManager, 4137551158);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AWaypointManager(Z_Construct_UClass_AWaypointManager, &AWaypointManager::StaticClass, TEXT("/Script/FPSGame"), TEXT("AWaypointManager"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AWaypointManager);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

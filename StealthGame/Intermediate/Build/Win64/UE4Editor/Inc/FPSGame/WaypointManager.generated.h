@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define FPSGAME_WaypointManager_generated_h
 
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_RPC_WRAPPERS
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_INCLASS_NO_PURE_DECLS \
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_RPC_WRAPPERS
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_RPC_WRAPPERS_NO_PURE_DECLS
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAWaypointManager(); \
 	friend FPSGAME_API class UClass* Z_Construct_UClass_AWaypointManager(); \
@@ -25,7 +25,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_INCLASS \
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesAWaypointManager(); \
 	friend FPSGAME_API class UClass* Z_Construct_UClass_AWaypointManager(); \
@@ -35,7 +35,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_STANDARD_CONSTRUCTORS \
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AWaypointManager(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AWaypointManager) \
@@ -48,7 +48,7 @@ private: \
 public:
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_ENHANCED_CONSTRUCTORS \
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AWaypointManager(AWaypointManager&&); \
@@ -59,29 +59,29 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AWaypointManager); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AWaypointManager)
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_PRIVATE_PROPERTY_OFFSET \
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__WaypointsArray() { return STRUCT_OFFSET(AWaypointManager, WaypointsArray); }
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_9_PROLOG
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_GENERATED_BODY_LEGACY \
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_11_PROLOG
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_PRIVATE_PROPERTY_OFFSET \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_RPC_WRAPPERS \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_INCLASS \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_STANDARD_CONSTRUCTORS \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_PRIVATE_PROPERTY_OFFSET \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_RPC_WRAPPERS \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_INCLASS \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointManager_h_12_GENERATED_BODY \
+#define StealthGame_Source_FPSGame_Public_WaypointManager_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_PRIVATE_PROPERTY_OFFSET \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_INCLASS_NO_PURE_DECLS \
-	StealthGame_Source_FPSGame_Public_WaypointManager_h_12_ENHANCED_CONSTRUCTORS \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_PRIVATE_PROPERTY_OFFSET \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_INCLASS_NO_PURE_DECLS \
+	StealthGame_Source_FPSGame_Public_WaypointManager_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

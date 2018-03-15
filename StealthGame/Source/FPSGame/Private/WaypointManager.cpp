@@ -19,7 +19,7 @@ void AWaypointManager::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("Amount of Waypoints in the level are %d"), WaypointsArray.Num());
 }
 
-TArray<AActor*> AWaypointManager::GetWaypointsInLevel()
+TArray<AWaypointNode*> AWaypointManager::GetWaypointsInLevel()
 {
 	return WaypointsArray;
 }

@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "WaypointManager.generated.h"
 
+class AWaypointNode;
+
 UCLASS()
 class FPSGAME_API AWaypointManager : public AActor
 {
@@ -15,7 +17,7 @@ public:
 	// Sets default values for this actor's properties
 	AWaypointManager();
 
-	TArray<AActor*> GetWaypointsInLevel();
+	TArray<AWaypointNode*> GetWaypointsInLevel();
 
 protected:
 	// Called when the game starts or when spawned
@@ -24,7 +26,7 @@ protected:
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Waypoints")
-	TArray<AActor*> WaypointsArray;
+	TArray<AWaypointNode*> WaypointsArray;
 
 
 

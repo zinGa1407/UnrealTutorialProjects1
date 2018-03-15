@@ -15,6 +15,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS
 #define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_EVENT_PARMS
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_CALLBACK_WRAPPERS
 #define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAWaypointAgent(); \
@@ -68,12 +70,16 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AWaypointAgent); \
 	FORCEINLINE static uint32 __PPO__WaypointManager() { return STRUCT_OFFSET(AWaypointAgent, WaypointManager); }
 
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_12_PROLOG
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_12_PROLOG \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_EVENT_PARMS
+
+
 #define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_PRIVATE_PROPERTY_OFFSET \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_CALLBACK_WRAPPERS \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_STANDARD_CONSTRUCTORS \
 public: \
@@ -85,6 +91,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_PRIVATE_PROPERTY_OFFSET \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_CALLBACK_WRAPPERS \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS_NO_PURE_DECLS \
 	StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_ENHANCED_CONSTRUCTORS \
 private: \

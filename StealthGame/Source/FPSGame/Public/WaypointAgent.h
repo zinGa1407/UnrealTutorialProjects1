@@ -26,27 +26,32 @@ protected:
 	UStaticMeshComponent * MeshComp;
 
 	UPROPERTY(EditInstanceOnly, Category = "AI")		// Start place of the Actor
-	AActor * StartWaypoint;
+	AWaypointNode * StartWaypoint;
 	UPROPERTY(VisibleInstanceOnly, Category = "AI")		// Destination of the Actor
-	AActor * EndWaypoint;
+	AWaypointNode * EndWaypoint;
 	UPROPERTY(VisibleInstanceOnly, Category = "AI")		// The waypoint where the actor is currently at
-	AActor * CurrentWaypoint;
+	AWaypointNode * CurrentWaypoint;
 	UPROPERTY(VisibleInstanceOnly, Category = "AI")		// The waypoint where the actor is moving towards
-	AActor * TargetWaypoint;
+	AWaypointNode * TargetWaypoint;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI")
 	AWaypointManager * WaypointManager;							// The waypoint manager in the level
+	UFUNCTION(BlueprintImplementableEvent, Category = "Timer")
+	void PrintTimer();
 
 protected:
 
-	TArray<AActor*> WaypointPathArray;					// Path of the Array the agent will go through towards destination
-	TArray<AActor*> SearchedThroughPoints;
+	TArray<AWaypointNode*> WaypointPathArray;					// Path of the Array the agent will go through towards destination
+
+
+	TArray<AWaypointNode*> OpenSet;								// Queue to which neighbouring waypoints get pushed
+	TArray<AWaypointNode*> ClosedSet;							// Waypoints that the algorithm has searched through
+	TArray<AWaypointNode*> ParentListForConnectingObjects;
 
 protected:
 
-	void SetDestination();								// Set the TargetWaypoint for the Actor
+	void SetDestination();										// Set the TargetWaypoint for the Actor
 	void MoveActorToNextNode();
-	bool CheckNeighboursForDestination(AWaypointNode* NextWaypoint);
-	void FindPathToDestination();
-	
+	void FindPathToDestination(TArray<AWaypointNode*> AllWaypointsInLevel);
+	void RetracePath(AWaypointNode* StartNode, AWaypointNode* EndNode);
 	
 };

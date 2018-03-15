@@ -39,6 +39,6 @@ protected:
 
 public:	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Waypoints")
-		TArray<AActor*> NeighbouringWaypoints;
+		TArray<AWaypointNode*> NeighbouringWaypoints;
 	
 };

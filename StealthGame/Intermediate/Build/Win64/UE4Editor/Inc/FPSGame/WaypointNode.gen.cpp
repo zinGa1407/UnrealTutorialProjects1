@@ -17,7 +17,6 @@ void EmptyLinkFunctionForGeneratedCodeWaypointNode() {}
 	FPSGAME_API UClass* Z_Construct_UClass_AWaypointNode();
 	ENGINE_API UClass* Z_Construct_UClass_AActor();
 	UPackage* Z_Construct_UPackage__Script_FPSGame();
-	ENGINE_API UClass* Z_Construct_UClass_AActor_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UArrowComponent_NoRegister();
 // End Cross Module References
 	void AWaypointNode::StaticRegisterNativesAWaypointNode()
@@ -49,7 +48,7 @@ void EmptyLinkFunctionForGeneratedCodeWaypointNode() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FArrayPropertyParams NewProp_NeighbouringWaypoints = { UE4CodeGen_Private::EPropertyClass::Array, "NeighbouringWaypoints", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000005, 1, nullptr, STRUCT_OFFSET(AWaypointNode, NeighbouringWaypoints), METADATA_PARAMS(NewProp_NeighbouringWaypoints_MetaData, ARRAY_COUNT(NewProp_NeighbouringWaypoints_MetaData)) };
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_NeighbouringWaypoints_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "NeighbouringWaypoints", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AActor_NoRegister, METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_NeighbouringWaypoints_Inner = { UE4CodeGen_Private::EPropertyClass::Object, "NeighbouringWaypoints", RF_Public|RF_Transient|RF_MarkAsNative, 0x0000000000000000, 1, nullptr, 0, Z_Construct_UClass_AWaypointNode_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ArrowComponents_MetaData[] = {
 				{ "Category", "Indicators" },
@@ -84,7 +83,7 @@ void EmptyLinkFunctionForGeneratedCodeWaypointNode() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AWaypointNode, 1246099531);
+	IMPLEMENT_CLASS(AWaypointNode, 3851256074);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AWaypointNode(Z_Construct_UClass_AWaypointNode, &AWaypointNode::StaticClass, TEXT("/Script/FPSGame"), TEXT("AWaypointNode"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AWaypointNode);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
