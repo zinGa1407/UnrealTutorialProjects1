@@ -88,7 +88,7 @@ void EmptyLinkFunctionForGeneratedCodeWaypointAgent() {}
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CurrentWaypoint_MetaData[] = {
 				{ "Category", "AI" },
 				{ "ModuleRelativePath", "Public/WaypointAgent.h" },
-				{ "ToolTip", "The waypoint where the actor is currently at" },
+				{ "ToolTip", "The waypoint where the actor is currently at in the Pathfinding function" },
 			};
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_CurrentWaypoint = { UE4CodeGen_Private::EPropertyClass::Object, "CurrentWaypoint", RF_Public|RF_Transient|RF_MarkAsNative, 0x0020080000020801, 1, nullptr, STRUCT_OFFSET(AWaypointAgent, CurrentWaypoint), Z_Construct_UClass_AWaypointNode_NoRegister, METADATA_PARAMS(NewProp_CurrentWaypoint_MetaData, ARRAY_COUNT(NewProp_CurrentWaypoint_MetaData)) };
@@ -142,7 +142,7 @@ void EmptyLinkFunctionForGeneratedCodeWaypointAgent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AWaypointAgent, 888314437);
+	IMPLEMENT_CLASS(AWaypointAgent, 421277365);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AWaypointAgent(Z_Construct_UClass_AWaypointAgent, &AWaypointAgent::StaticClass, TEXT("/Script/FPSGame"), TEXT("AWaypointAgent"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AWaypointAgent);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

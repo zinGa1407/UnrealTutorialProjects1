@@ -1,13 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#define print(text) if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 1.5, FColor::White,text)
-
 #include "WaypointAgent.h"
 #include "Components/StaticMeshComponent.h"
 #include "WaypointManager.h"
 #include "WaypointNode.h"
 #include "Algo/Reverse.h"
-
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AWaypointAgent::AWaypointAgent()
@@ -31,11 +29,19 @@ void AWaypointAgent::BeginPlay()
 	// SET STARTPOINT, then calculate path
 	if (StartWaypoint) {
 		PrintTimer();
+		SetActorLocation(StartWaypoint->GetActorLocation());
 		SetDestination();
 	}
 
 
 	//Spawn and start driving/walking when destinations are set
+}
+
+void AWaypointAgent::Tick(float DeltaTime)
+{
+	if (bHasDestination) {
+		MoveActorToNextNode( DeltaTime);
+	}
 }
 
 void AWaypointAgent::SetDestination()
@@ -50,19 +56,34 @@ void AWaypointAgent::SetDestination()
 			if (EndWaypoint != StartWaypoint) break;
 		}
 		
-
 		if (EndWaypoint) FindPathToDestination(AllWaypoints);
 	}
 }
 
-void AWaypointAgent::MoveActorToNextNode()
+void AWaypointAgent::MoveActorToNextNode( float DeltaTime )
 {
-	PrintTimer();
+	//PrintTimer();
+	//UE_LOG(LogTemp, Warning, TEXT("Time now: %f"), UGameplayStatics::GetRealTimeSeconds(GetWorld()));
+
+	TargetWaypoint = WaypointPathArray[0];
+
+	SetActorLocation(FMath::Lerp(GetActorLocation(), TargetWaypoint->GetActorLocation(), DeltaTime));
 
 	// Move towards next waypoint, smooth movement and check for objects in front.
 
 	// When node is reached, set next target node
+	if (AActor::GetDistanceTo(TargetWaypoint) < DistanceToNode)
+	{
+		if (TargetWaypoint == EndWaypoint)
+		{
+			//Destination reached
+			UE_LOG(LogTemp, Warning, TEXT("Reached Destination"));
+			bHasDestination = false;
+			return;
+		}
 
+		WaypointPathArray.Remove(TargetWaypoint);
+	}
 
 	// When destination is reached
 	// Final Event
@@ -103,10 +124,12 @@ void AWaypointAgent::FindPathToDestination(TArray<AWaypointNode*> AllWaypointsIn
 		{
 			if (ClosedSet.Contains(Neighbour))
 				continue;
-			
-			ParentListForConnectingObjects.Add(CurrentWaypoint);
-			if (!OpenSet.Contains(Neighbour)) 
+
+
+			if (!OpenSet.Contains(Neighbour)) {
+				ParentListForConnectingObjects.Add(CurrentWaypoint);
 				OpenSet.Add(Neighbour);
+			}
 		}
 	}
 
@@ -184,10 +207,14 @@ void AWaypointAgent::RetracePath(AWaypointNode* StartNode, AWaypointNode* EndNod
 
 	Algo::Reverse(PathOfNodes);
 
+	WaypointPathArray = PathOfNodes;
+
 	for (int j = 0; j < PathOfNodes.Num(); j++)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("%s"), *PathOfNodes[j]->GetName());
 	}
 
-	MoveActorToNextNode();
+	
+	bHasDestination = true;
+	//MoveActorToNextNode();
 }
