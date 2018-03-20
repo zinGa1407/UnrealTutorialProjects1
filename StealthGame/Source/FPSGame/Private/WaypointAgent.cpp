@@ -22,7 +22,10 @@ AWaypointAgent::AWaypointAgent()
 void AWaypointAgent::BeginPlay()
 {
 	Super::BeginPlay();
-	
+}
+
+void AWaypointAgent::StartAgent()
+{
 	//Make Actor (car/human) and give it to the waypoint MANAGER to calculate path
 	if (!WaypointManager) return;
 
@@ -32,7 +35,6 @@ void AWaypointAgent::BeginPlay()
 		SetActorLocation(StartWaypoint->GetActorLocation());
 		SetDestination();
 	}
-
 
 	//Spawn and start driving/walking when destinations are set
 }
@@ -51,8 +53,10 @@ void AWaypointAgent::SetDestination()
 
 		while (true)
 		{
+			if (AllWaypoints.Num() < 2) break;
+			
 			EndWaypoint = AllWaypoints[FMath::RandRange(0, AllWaypoints.Num() - 1)];
-
+			
 			if (EndWaypoint != StartWaypoint) break;
 		}
 		
@@ -60,11 +64,10 @@ void AWaypointAgent::SetDestination()
 	}
 }
 
+
+
 void AWaypointAgent::MoveActorToNextNode( float DeltaTime )
 {
-	//PrintTimer();
-	//UE_LOG(LogTemp, Warning, TEXT("Time now: %f"), UGameplayStatics::GetRealTimeSeconds(GetWorld()));
-
 	TargetWaypoint = WaypointPathArray[0];
 
 	SetActorLocation(FMath::Lerp(GetActorLocation(), TargetWaypoint->GetActorLocation(), DeltaTime));
@@ -76,9 +79,16 @@ void AWaypointAgent::MoveActorToNextNode( float DeltaTime )
 	{
 		if (TargetWaypoint == EndWaypoint)
 		{
-			//Destination reached
-			UE_LOG(LogTemp, Warning, TEXT("Reached Destination"));
+			WaypointPathArray.Remove(TargetWaypoint);
+
+			//UE_LOG(LogTemp, Warning, TEXT("Reached Destination"));
 			bHasDestination = false;
+
+			StartWaypoint = EndWaypoint;
+
+			// Set newDestination after a few seconds
+			GetWorldTimerManager().SetTimer(NewDestinationTimer, this , &AWaypointAgent::SetDestination, 5.f, false);
+
 			return;
 		}
 
@@ -91,7 +101,7 @@ void AWaypointAgent::MoveActorToNextNode( float DeltaTime )
 
 void AWaypointAgent::FindPathToDestination(TArray<AWaypointNode*> AllWaypointsInLevel)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Start Path Search From %s , to point %s"), *StartWaypoint->GetName(), *EndWaypoint->GetName());
+	//UE_LOG(LogTemp, Warning, TEXT("Start Path Search From %s , to point %s"), *StartWaypoint->GetName(), *EndWaypoint->GetName());
 
 	OpenSet.Empty();								//Queue to which neighbouring waypoints get pushed
 	ClosedSet.Empty();							//Waypoints that the algorithm has searched through
@@ -115,7 +125,7 @@ void AWaypointAgent::FindPathToDestination(TArray<AWaypointNode*> AllWaypointsIn
 		ClosedSet.Add(CurrentWaypoint);
 
 		if (CurrentWaypoint == EndWaypoint) {
-			UE_LOG(LogTemp, Warning, TEXT("Found Target!"));
+			//UE_LOG(LogTemp, Warning, TEXT("Found Target!"));
 			RetracePath(StartWaypoint, EndWaypoint);
 			return;
 		}
@@ -132,61 +142,6 @@ void AWaypointAgent::FindPathToDestination(TArray<AWaypointNode*> AllWaypointsIn
 			}
 		}
 	}
-
-	/*
-	//Check through neighbours Function
-	TArray<AWaypointNode*> SearchQueue;								//Queue to which neighbouring waypoints get pushed
-	TArray<AWaypointNode*> SearchedThroughPoints;					//Waypoints that the algorithm has searched through
-
-	SearchQueue.Push(StartWaypoint);
-	SearchedThroughPoints.Push(StartWaypoint);
-
-	while (SearchQueue.Num() != 0)
-	{
-		bool bIsAllNullPtr = true;
-		for (int i = 0; i < SearchQueue.Num(); i++)
-		{
-			if (SearchQueue[i]) {
-				bIsAllNullPtr = false;
-				break;
-			}
-		}
-		if (bIsAllNullPtr) {
-			UE_LOG(LogTemp, Warning, TEXT("There are only nullptrs left so goodbye son"));
-			break;
-		}
-		
-		CurrentWaypoint = SearchQueue[0];
-		SearchQueue.RemoveAt(0, 1, true);
-		
-		
-		for (AWaypointNode* Neighbour : CurrentWaypoint->NeighbouringWaypoints)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("Actor is looking for a destination in waypoint %s"), *Neighbour->GetName());
-
-			if (Neighbour == EndWaypoint)	// Found my starting node - Return path
-			{
-				MoveActorToNextNode();
-				UE_LOG(LogTemp, Warning, TEXT("Found Target!"));
-				SearchQueue.Empty();
-				break;
-			}
-			
-			SearchedThroughPoints.Push(Neighbour);
-			for (int32 i = 0; i < Neighbour->NeighbouringWaypoints.Num(); i++)
-			{
-				AWaypointNode* NewNeighbour = Neighbour->NeighbouringWaypoints[i];
-				
-				if (SearchedThroughPoints.Contains(NewNeighbour)) {
-					UE_LOG(LogTemp, Warning, TEXT("Already searched through %s"), *NewNeighbour->GetName());
-				}
-				else {
-					SearchQueue.Push(NewNeighbour);
-				}
-			}
-		}
-	}
-	*/
 }
 
 void AWaypointAgent::RetracePath(AWaypointNode* StartNode, AWaypointNode* EndNode)
@@ -211,7 +166,7 @@ void AWaypointAgent::RetracePath(AWaypointNode* StartNode, AWaypointNode* EndNod
 
 	for (int j = 0; j < PathOfNodes.Num(); j++)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%s"), *PathOfNodes[j]->GetName());
+		//UE_LOG(LogTemp, Warning, TEXT("%s"), *PathOfNodes[j]->GetName());
 	}
 
 	

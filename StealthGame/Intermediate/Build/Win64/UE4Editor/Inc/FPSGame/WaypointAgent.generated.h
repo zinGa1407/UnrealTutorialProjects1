@@ -13,8 +13,46 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define FPSGAME_WaypointAgent_generated_h
 
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS
-#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS_NO_PURE_DECLS
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execMoveActorToNextNode) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_DeltaTime); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->MoveActorToNextNode(Z_Param_DeltaTime); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execStartAgent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->StartAgent(); \
+		P_NATIVE_END; \
+	}
+
+
+#define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execMoveActorToNextNode) \
+	{ \
+		P_GET_PROPERTY(UFloatProperty,Z_Param_DeltaTime); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->MoveActorToNextNode(Z_Param_DeltaTime); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execStartAgent) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->StartAgent(); \
+		P_NATIVE_END; \
+	}
+
+
 #define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_EVENT_PARMS
 #define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_CALLBACK_WRAPPERS
 #define StealthGame_Source_FPSGame_Public_WaypointAgent_h_15_INCLASS_NO_PURE_DECLS \
@@ -65,7 +103,6 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AWaypointAgent); \
 	FORCEINLINE static uint32 __PPO__MeshComp() { return STRUCT_OFFSET(AWaypointAgent, MeshComp); } \
 	FORCEINLINE static uint32 __PPO__StartWaypoint() { return STRUCT_OFFSET(AWaypointAgent, StartWaypoint); } \
 	FORCEINLINE static uint32 __PPO__EndWaypoint() { return STRUCT_OFFSET(AWaypointAgent, EndWaypoint); } \
-	FORCEINLINE static uint32 __PPO__CurrentWaypoint() { return STRUCT_OFFSET(AWaypointAgent, CurrentWaypoint); } \
 	FORCEINLINE static uint32 __PPO__TargetWaypoint() { return STRUCT_OFFSET(AWaypointAgent, TargetWaypoint); } \
 	FORCEINLINE static uint32 __PPO__WaypointManager() { return STRUCT_OFFSET(AWaypointAgent, WaypointManager); }
 

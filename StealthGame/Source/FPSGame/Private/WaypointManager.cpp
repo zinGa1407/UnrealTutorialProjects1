@@ -28,6 +28,5 @@ TArray<AWaypointNode*> AWaypointManager::GetWaypointsInLevel()
 void AWaypointManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
